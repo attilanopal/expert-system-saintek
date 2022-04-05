@@ -71,7 +71,7 @@ otak_atik_peralatan(X):-
 menuask(A, V, _):-
     known(ya, A, V), % succeed if true
     !. % stop looking
-menuask(A,V,_):- 
+menuask(A,_,_):- 
     alreadyasked(ya, A), !, fail. 
 menuask(A, V, MenuList) :-
     write('apakah kamu suka '), write(A), write('?'), nl,
