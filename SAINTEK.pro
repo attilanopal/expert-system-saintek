@@ -78,7 +78,7 @@ check_val(X, _A, _V, MenuList) :-
     member(X, MenuList),
     !.
 check_val(X, A, V, MenuList) :-
-    write(X), write(' gk boleh ketik itu, coba lagi'), nl,
+    write(X), write(' gak boleh ketik itu, coba lagi'), nl,
     menuask(A, V, MenuList). 
  
 /* Member rules */
@@ -96,7 +96,7 @@ solve :-
     top_goal(X),
     write('Kamu cocok di '), write(X), nl.
 solve :-
-    write('Programnya kurang pinter.'), nl. 
+    write('Maaf programnya kurang pinter.'), nl. 
  
 /* Command loop */
 go :-  
@@ -109,7 +109,7 @@ go :-
  
 greeting :-
     write('Program untuk mengetahui jurusan yang tepat untuk kamu disaintek (Teknik Eletkro, Kedokteran, Teknik Informatika)'), nl,
-    write('Tekan mulai atau keluar di comand prompt.'), nl.
+    write('Ketik mulai atau keluar di comand prompt.'), nl.
  
 /* Running Program */
 do(mulai) :-
@@ -120,7 +120,7 @@ do(mulai) :-
 do(keluar).
 do(X) :-
     write(X),
-    write('gak boleh ketik itu gan'), nl,
+    write(' gak boleh ketik itu gan'), nl,
     fail. 
 % End Simple Shell
  
