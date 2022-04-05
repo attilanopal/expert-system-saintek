@@ -1,42 +1,47 @@
 % Start Rules (Knowledge Base)
 /* Knowledge Base */
-jurusan(sistem_informasi) :-
-    matematika(yes),
-    berlogika(yes),
-    ngoding(yes).
-
-jurusan(sistem_informasi) :-
+jurusan("Sistem Informasi") :-
     matematika(yes),
     berlogika(yes),
     ngoding(yes),
-    otak_atik_peralatan(yes).
+    bisnis(yes).
 
-jurusan(sistem_informasi) :-
+jurusan("Teknik Informatika") :-
     matematika(yes),
     berlogika(yes),
-    ngoding(no).
+    ngoding(yes),
+    bisnis(no).
 
-jurusan(sistem_informasi) :-
+jurusan("Teknik Elektro") :-
     matematika(yes),
     berlogika(yes),
     ngoding(no),
+    fisika(yes),
     otak_atik_peralatan(yes).
 
-jurusan(teknik_informatika) :-
+jurusan("Teknik Fisika") :-
     matematika(yes),
     berlogika(yes),
-    ngoding(yes),
-    fisika(yes).
+    ngoding(no),
+    fisika(yes),
+    otak_atik_peralatan(no).
 
-jurusan(kedokteran) :- 
+jurusan("Teknik Kimia") :-
+    matematika(yes),
     berlogika(yes),
+    ngoding(no),
+    fisika(no),
+    kimia(yes).
+
+jurusan("Kedokteran") :- 
+    matematika(no),
     biologi(yes),
     bidang_kesehatan(yes).
 
-jurusan(teknik_elektro) :-
-    matematika(yes),
-    fisika(yes),
-    otak_atik_peralatan(yes).
+jurusan("Biologi") :- 
+    matematika(no),
+    biologi(yes),
+    bidang_kesehatan(no).
 
 
 
@@ -48,12 +53,16 @@ berlogika(X):-
     menuask(berlogika,X, [yes, no]).
 ngoding(X):-
     menuask(ngoding, X, [yes, no]).
+bisnis(X):-
+    menuask(bisnis, X, [yes, no]).
 fisika(X):-
     menuask(fisika ,X, [yes, no]).
-bidang_kesehatan(X):-
-    menuask(bidang_kesehatan, X, [yes, no]).
+kimia(X):-
+    menuask(kimia, X, [yes, no]).
 biologi(X):-
     menuask(biologi, X, [yes, no]).
+bidang_kesehatan(X):-
+    menuask(bidang_kesehatan, X, [yes, no]).
 otak_atik_peralatan(X):-
     menuask(otak_atik_peralatan, X, [yes, no]).
 
@@ -62,8 +71,8 @@ otak_atik_peralatan(X):-
 menuask(A, V, _):-
     known(ya, A, V), % succeed if true
     !. % stop looking
-menuask(A,V,_):-
-    alreadyasked(ya, A), !, fail.
+menuask(A,V,_):- 
+    alreadyasked(ya, A), !, fail. 
 menuask(A, V, MenuList) :-
     write('apakah kamu suka '), write(A), write('?'), nl,
     write(MenuList), nl,
